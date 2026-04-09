@@ -3,7 +3,7 @@ set $mod Mod1
 font pango:CaskaydiaCove Nerd Font 12px
 
 set $cursor_theme Bibata-Modern-Ice
-set $cursor_size 24
+set $cursor_size 20
 
 exec_always export XCURSOR_THEME=$cursor_theme
 exec_always export XCURSOR_SIZE=$cursor_size
@@ -141,19 +141,20 @@ smart_gaps inverse_outer
 
 exec --no-startup-id nm-applet
 exec_always autotiling
+exec_always swaync
 
-# input * {
-#     xkb_layout br
-#     xkb_variant abnt2
-# }
+ # input * {
+ #     xkb_layout br
+ #     xkb_variant abnt2
+ # }
 
-input * {
+ input * {
     xkb_layout us
     xkb_variant colemak_dh
     xkb_options ctrl:swapcaps
 }
 
-seat seat0 xcursor_theme Bibata-Modern-Ice 24
+seat seat0 xcursor_theme Bibata-Modern-Ice 20
 
 # input "1:1:AT_Translated_Set_2_keyboard" {
 #     xkb_layout us
