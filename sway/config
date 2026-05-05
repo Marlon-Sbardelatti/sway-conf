@@ -156,26 +156,11 @@ exec_always swaync
 
 seat seat0 xcursor_theme Bibata-Modern-Ice 20
 
-# input "1:1:AT_Translated_Set_2_keyboard" {
-#     xkb_layout us
-#     xkb_variant colemak_dh
-#     xkb_options ctrl:swapcaps
-# }
-
-# input "0:0:Ideapad_extra_buttons" {
-#     xkb_layout us
-# }
-
-# input "64562:647:JosefAdamcik_Sofle*" {
-#     xkb_layout br
-#     xkb_variant abnt2
-# }
-
-
-
-input "MSFT0001:00 06CB:CE2D Touchpad" {
+input type:touchpad {
     tap enabled
     tap_button_map lrm
+    natural_scroll enabled
+    dwt enabled
 }
 
 bindsym $mod+n exec firefox
@@ -198,4 +183,14 @@ bar {
     status_command swayrbar
     font pango:CaskaydiaCove Nerd Font 11
 }
+
+exec_always dbus-update-activation-environment --systemd \
+  WAYLAND_DISPLAY \
+  XDG_CURRENT_DESKTOP=sway \
+  GDK_SCALE=1 \
+  GDK_DPI_SCALE=1
+
+for_window [app_id="xdg-desktop-portal-gtk"] border none
+
+output * bg /home/hetzwga/.config/wallpapers/wallpaperflare.com_wallpaper.jpg fill
 
