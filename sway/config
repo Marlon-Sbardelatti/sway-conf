@@ -184,13 +184,22 @@ bar {
     font pango:CaskaydiaCove Nerd Font 11
 }
 
-exec_always dbus-update-activation-environment --systemd \
-  WAYLAND_DISPLAY \
-  XDG_CURRENT_DESKTOP=sway \
-  GDK_SCALE=1 \
-  GDK_DPI_SCALE=1
+exec_always {
+    dbus-update-activation-environment --systemd \
+        DISPLAY \
+        WAYLAND_DISPLAY \
+        SWAYSOCK \
+        XDG_CURRENT_DESKTOP=sway
+
+    systemctl --user import-environment \
+        DISPLAY \
+        WAYLAND_DISPLAY \
+        SWAYSOCK \
+        XDG_CURRENT_DESKTOP
+}
+
+exec systemctl --user start sway-session.target
 
 for_window [app_id="xdg-desktop-portal-gtk"] border none
 
-output * bg /home/hetzwga/.config/wallpapers/wallpaperflare.com_wallpaper.jpg fill
-
+output * bg /home/hetzwga/.config/wallpapers/witcher.jpg fill
